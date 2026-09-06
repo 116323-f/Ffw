@@ -48,7 +48,7 @@ public class Hold : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         {
             if (xAction.IsPressed())
             {
-                print($"X key properly Pressed On {this.name}!");
+                //print($"X key properly Pressed On {this.name}!");
                 spriteRenderer.color = pressedColour;
                 Hit = true;
                 ProperlyHit();
@@ -64,7 +64,7 @@ public class Hold : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
             if (zAction.IsPressed())
             {
-                print($"Z key properly Pressed On {this.name}!");
+                //print($"Z key properly Pressed On {this.name}!");
                 Hit = true;
                 ProperlyHit();
             }
@@ -76,17 +76,22 @@ public class Hold : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 NotProperlyHit();
             }
         }
+
+        if (PointerEntered == false && Hit == true)
+        {
+            print($"Pointer exited while holding key on {this.name}!");
+            NotProperlyHit();
+        }
     }
 
     //count up hitcounter by seconds held and convert this into pay 
     private void ProperlyHit()
     {
-            HitCounter += Time.deltaTime;
-
-            // Convert seconds held into pay
-            Pay = HitCounter * PayPerSecond;
-
-            print($"Hit Counter: {HitCounter} seconds, Pay: {Pay}");
+        HitCounter += Time.deltaTime;
+        // Convert seconds held into pay
+        Pay = HitCounter * PayPerSecond;
+        
+        print($"Hit Counter: {HitCounter} seconds, Pay: {Pay}");
     }
 
     //stop hitcounter and set note to null so its unable to be pressed any longer.
