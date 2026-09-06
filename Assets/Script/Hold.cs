@@ -6,10 +6,14 @@ public class Hold : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     InputAction xAction;
     InputAction zAction;
+    
     private bool PointerEntered = false;
     private bool Hit = false;
-    public int HitCounter = 0;
     [SerializeField] private Color pressedColour;
+    
+    [SerializeField] private float HitCounter = 0f;
+    [SerializeField] private float PayPerSecond = 1f;
+    private float Pay = 0f;
 
     private SpriteRenderer spriteRenderer;
     private Color originalColour;
@@ -28,14 +32,8 @@ public class Hold : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         //what the method does
 
         print($"On Mouse Enter On {this.name}!");
-        PointerEntered = false;
-
-    }
-
-    public void OnPointerStay(PointerEventData eventData)
-    {
-        print($"On Mouse Stay On {this.name}");
         PointerEntered = true;
+
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -83,21 +81,20 @@ public class Hold : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     //count up hitcounter by seconds held and convert this into pay 
     private void ProperlyHit()
     {
-        while (Hit == true)
-        {
-            HitCounter ++ ;
-            print($"HitCounter: " + HitCounter);
+            HitCounter += Time.deltaTime;
 
-            return;
+            // Convert seconds held into pay
+            Pay = HitCounter * PayPerSecond;
 
-        }
+            print($"Hit Counter: {HitCounter} seconds, Pay: {Pay}");
     }
 
     //stop hitcounter and set note to null so its unable to be pressed any longer.
     //make sure to only set this for that single note missed
     private void NotProperlyHit()
     {
-        
+        Hit = false;
+        this.gameObject.SetActive(false);
     }
 
 

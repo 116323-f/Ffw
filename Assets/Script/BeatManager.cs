@@ -12,7 +12,7 @@ public class BeatManager : MonoBehaviour
     {
         foreach (Intervals interval in intervals)
         {
-            //time currently elapsed/number of intervals = time elapsed in intervals which is then sent back to check for new interbals
+            //time currently elapsed/number of intervals = time elapsed in intervals which is then sent back to check for new intervals
             float sampledTime = (audioSource.timeSamples / (audioSource.clip.frequency * interval.GetIntervalLength(bpm)));
             interval.CheckForNewInterval(sampledTime);
         }

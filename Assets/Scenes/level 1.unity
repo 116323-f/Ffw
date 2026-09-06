@@ -1319,7 +1319,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &449307039
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2716,51 +2716,15 @@ MonoBehaviour:
   - steps: 0
     trigger:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 890239754}
-          m_TargetAssemblyTypeName: UnityEngine.CircleCollider2D, UnityEngine
-          m_MethodName: 
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
   - steps: 0
     trigger:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 676609399}
-          m_TargetAssemblyTypeName: UnityEngine.CircleCollider2D, UnityEngine
-          m_MethodName: 
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
   - steps: 0
     trigger:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1526479188}
-          m_TargetAssemblyTypeName: UnityEngine.BoxCollider2D, UnityEngine
-          m_MethodName: 
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!1 &890239751
 GameObject:
   m_ObjectHideFlags: 0
@@ -3342,7 +3306,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &926123032
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5626,8 +5590,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a76a72d4cee3f940b7c6ad5b0fe1657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hold
-  HitCounter: 0
   pressedColour: {r: 0, g: 0, b: 0, a: 0}
+  HitCounter: 0
+  PayPerSecond: 1
 --- !u!1 &1537868585
 GameObject:
   m_ObjectHideFlags: 0
@@ -7682,7 +7647,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1904941022
 RectTransform:
   m_ObjectHideFlags: 0
