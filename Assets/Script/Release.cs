@@ -10,11 +10,15 @@ public class Release : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField] private Color releasedColour;
     private SpriteRenderer spriteRenderer;
 
+    private Release script;
+
     private void Start()
     {
         xAction = InputSystem.actions.FindAction("Xkey");
         zAction = InputSystem.actions.FindAction("Zkey");
         spriteRenderer = GetComponent<SpriteRenderer>();
+        script = GetComponent<Release>();
+        script.enabled = true;
     }
 
     //method status and name(what the method contains)
@@ -31,6 +35,8 @@ public class Release : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         print($"On Mouse Exit On {this.name}!");
         PointerEntered = false;
+        print($"Miss");
+        script.enabled = false;
     }
 
     void Update()

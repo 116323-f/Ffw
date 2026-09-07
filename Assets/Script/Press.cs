@@ -10,11 +10,15 @@ public class Press : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField] private Color pressedColour;
     private SpriteRenderer spriteRenderer;
 
+    private Press script;
+
     private void Start()
     {
         xAction = InputSystem.actions.FindAction("Xkey");
         zAction = InputSystem.actions.FindAction("Zkey");
         spriteRenderer = GetComponent<SpriteRenderer>();
+        script = GetComponent<Press>();
+        script.enabled = true;
     }
 
     //method status and name(what the method contains)
@@ -31,6 +35,8 @@ public class Press : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         print($"On Mouse Exit On {this.name}!");
         PointerEntered = false;
+        print($"Miss");
+        script.enabled = false;
     }
 
     void Update()

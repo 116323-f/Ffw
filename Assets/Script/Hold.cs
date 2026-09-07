@@ -15,7 +15,6 @@ public class Hold : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private float Pay = 0f;
 
     private SpriteRenderer spriteRenderer;
-    private Color originalColour;
 
     private Hold script;
 
@@ -24,7 +23,6 @@ public class Hold : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         xAction = InputSystem.actions.FindAction("Xkey");
         zAction = InputSystem.actions.FindAction("Zkey");
         spriteRenderer = GetComponent<SpriteRenderer>();
-        originalColour = spriteRenderer.color;
         script = GetComponent<Hold>();
         script.enabled = true;
     }
@@ -43,6 +41,7 @@ public class Hold : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         print($"On Mouse Exit On {this.name}!");
         PointerEntered = false;
+        print($"Miss");
         script.enabled = false;
     }
 
@@ -60,7 +59,7 @@ public class Hold : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             else if (xAction.WasReleasedThisFrame())
             {
                 print($"X key released On {this.name}!");
-                spriteRenderer.color = originalColour;
+                print($"Miss");
                 script.enabled = false;
             }
 
@@ -73,6 +72,7 @@ public class Hold : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             else if (zAction.WasReleasedThisFrame())
             {
                 print($"Z key released On {this.name}!");
+                print($"Miss");
                 script.enabled = false;
             }
         }
@@ -89,12 +89,6 @@ public class Hold : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         print($"Hit Counter: {HitCounter} seconds, Pay: {Pay}");
     }
 
-    //stop hitcounter and set note to null so its unable to be pressed any longer.
-    //make sure to only set this for that single note missed
-    //private void NotProperlyHit()
-    //{
-    //    this.gameObject.SetActive(false);
-    //}
 
 
 }
