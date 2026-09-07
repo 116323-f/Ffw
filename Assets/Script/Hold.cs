@@ -17,12 +17,16 @@ public class Hold : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private SpriteRenderer spriteRenderer;
     private Color originalColour;
 
+    //private help;
+
     private void Start()
     {
         xAction = InputSystem.actions.FindAction("Xkey");
         zAction = InputSystem.actions.FindAction("Zkey");
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColour = spriteRenderer.color;
+        //help = GetComponent<Hold>;
+        //help.enabled = true;
     }
 
     //method status and name(what the method contains)
@@ -39,7 +43,6 @@ public class Hold : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         print($"On Mouse Exit On {this.name}!");
         PointerEntered = false;
-        this.gameObject.SetActive(false);
     }
 
     void Update()
@@ -57,7 +60,6 @@ public class Hold : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             {
                 print($"X key released On {this.name}!");
                 spriteRenderer.color = originalColour;
-                this.gameObject.SetActive(false);
             }
 
             if (zAction.IsPressed())
@@ -69,7 +71,7 @@ public class Hold : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             else if (zAction.WasReleasedThisFrame())
             {
                 print($"Z key released On {this.name}!");
-                this.gameObject.SetActive(false);
+                ProperlyHit.enabled = false;
             }
         }
 
