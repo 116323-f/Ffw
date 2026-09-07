@@ -8,7 +8,6 @@ public class Hold : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     InputAction zAction;
     
     private bool PointerEntered = false;
-    private bool Hit = false;
     [SerializeField] private Color pressedColour;
     
     [SerializeField] private float HitCounter = 0f;
@@ -40,6 +39,7 @@ public class Hold : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         print($"On Mouse Exit On {this.name}!");
         PointerEntered = false;
+        this.gameObject.SetActive(false);
     }
 
     void Update()
@@ -50,7 +50,6 @@ public class Hold : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             {
                 //print($"X key properly Pressed On {this.name}!");
                 spriteRenderer.color = pressedColour;
-                Hit = true;
                 ProperlyHit();
             }
 
@@ -58,30 +57,22 @@ public class Hold : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             {
                 print($"X key released On {this.name}!");
                 spriteRenderer.color = originalColour;
-                Hit = false;
-                NotProperlyHit();
+                this.gameObject.SetActive(false);
             }
 
             if (zAction.IsPressed())
             {
                 //print($"Z key properly Pressed On {this.name}!");
-                Hit = true;
                 ProperlyHit();
             }
 
             else if (zAction.WasReleasedThisFrame())
             {
                 print($"Z key released On {this.name}!");
-                Hit = false;
-                NotProperlyHit();
+                this.gameObject.SetActive(false);
             }
         }
 
-        if (PointerEntered == false && Hit == true)
-        {
-            print($"Pointer exited while holding key on {this.name}!");
-            NotProperlyHit();
-        }
     }
 
     //count up hitcounter by seconds held and convert this into pay 
@@ -89,18 +80,17 @@ public class Hold : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         HitCounter += Time.deltaTime;
         // Convert seconds held into pay
-        Pay = HitCounter * PayPerSecond;
+        Pay = (HitCounter/2) * PayPerSecond;
         
         print($"Hit Counter: {HitCounter} seconds, Pay: {Pay}");
     }
 
     //stop hitcounter and set note to null so its unable to be pressed any longer.
     //make sure to only set this for that single note missed
-    private void NotProperlyHit()
-    {
-        Hit = false;
-        this.gameObject.SetActive(false);
-    }
+    //private void NotProperlyHit()
+    //{
+    //    this.gameObject.SetActive(false);
+    //}
 
 
 }
